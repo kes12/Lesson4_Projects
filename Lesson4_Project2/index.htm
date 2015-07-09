@@ -14,7 +14,7 @@
    <meta name="viewport" content="width=device-width,initial-scale=1.0">
    <title>Lesson 4 - Project #2</title>
    <link rel="stylesheet" href="styles.css" />
-   <script src="modernizer.custom.05819.js"></script>
+   <script src="modernizr.custom.05819.js"></script>
 </head>
 
 <body>
@@ -84,7 +84,7 @@
          var firstname = document.getElementById("fnameInput");
          var hours = document.getElementById("hoursInput");
          var rate = document.getElementById("wageInput");
-         var empName = firstname.value + "" + lastname.value;
+         var empName = firstname.value + " " + lastname.value;
          
          //Declare variables for Payroll Calculations
          var wageRate;
@@ -93,6 +93,7 @@
          var fedTaxWith;
          var stateTaxWith;
          var totDeductions;
+         var grossPay;
          
          //Declare Constants (withholding rates)
          const FED_RATE = 0.15; //federal rate
@@ -103,7 +104,10 @@
          hoursWorked = parseFloat(hours.value);
          
          //Calculate Gross Pay
-         grossPay = hoursWorked * FED_RATE;
+         grossPay = hoursWorked * wageRate;
+         
+         //Calculate Federal Withholdings
+         fedTaxWith = grossPay * FED_RATE;
          
          //Calculate State Withholdings
          stateTaxWith = grossPay * STATE_RATE;
@@ -124,7 +128,7 @@
          document.getElementById("fedwith").innerHTML = "Federal Income Tax:" + fedTaxWith.toFixed(2);
          document.getElementById("statewith").innerHTML = "State Income Tax:" + stateTaxWith.toFixed(2);
          document.getElementById("totalded").innerHTML = "Total Deductions:" + totDeductions.toFixed(2);
-         document.getElementById("netpay").innerHTML "Net Pay:" + netPay.toFixed(2);
+         document.getElementById("netpay").innerHTML = "Net Pay:" + netPay.toFixed(2);
          
      }//end of myFunction
  </script>
